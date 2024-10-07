@@ -215,7 +215,7 @@ hardline <- gsub("^treatment", "", gsub(":x", "", hardline[grepl(":x", hardline)
     mutate(newx=x*attr(xstd, "scaled:scale") + attr(xstd, "scaled:center")) %>%
     add_fitted_draws(mod1, re_formula = NA) %>%
     median_qi(ynew = .value, .width = .95) %>%
-    mutate(significance = (as.character(treatment) %in% hardline)*1) %>%
+    mutate(significance = (gsub("-", "M",as.character(treatment)) %in% hardline)*1) %>%
     ggplot(aes(x=newx, y=ynew, id=as.factor(treatment),
                color=as.factor(treatment), fill=as.factor(treatment)))+
     geom_point(data = dat,
