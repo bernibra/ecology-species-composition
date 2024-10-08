@@ -51,3 +51,5 @@ rsconnect/
 # model outputs
 results/*.rds
 
+# Mac stuff
+.DS_Store
