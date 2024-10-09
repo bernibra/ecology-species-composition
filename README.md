@@ -24,8 +24,8 @@ instead.
 
 The first models analyse different network dissimilarity metrics within
 sites and between treatments. We will assume a Clementsian view of
-community ecology, where maturing communities progress towards a optimum
-community structure. Therefore, we will generate three types of
+community ecology, where maturing communities progress towards an
+optimum community structure. Therefore, we will generate three types of
 communities: 10 mature communities, already at the optimum state; 10
 maturing communities, progressing towards the optimum state over time;
 and, 10 unrestored communities, which should resemble maturing
@@ -277,11 +277,6 @@ species $a$, $b$, and $c$.
 
 d_spp <- d %>% rowwise() %>%
   reframe(sp = c("a", "b", "c"), across())
-#> Warning: There was 1 warning in `reframe()`.
-#> ℹ In argument: `across()`.
-#> Caused by warning:
-#> ! Using `across()` without supplying `.cols` was deprecated in dplyr 1.1.0.
-#> ℹ Please supply `.cols` instead.
 ```
 
 Then, let’s assume that the role of a species is defined by a
@@ -355,8 +350,8 @@ the dissimilarity between any two species at any time point and network.
 We will define the dissimilarity metric as $d=\frac{1-\rho}{2}$, where
 $\rho$ is the Pearson’s correlation between species role. Notice,
 however, that we will use the state of the network, defined for the
-previous figures, as element $v_0$ of species roles, to account for
-overall network differences.
+previous figures, as element $v_0$ of species roles, to include overall
+network differences as part of the definiton of a role.
 
 ``` r
 

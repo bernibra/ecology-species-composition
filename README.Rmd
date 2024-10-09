@@ -34,7 +34,7 @@ nt <- 4
 mu_ <- c(0.25, 0.75)
 ```
 
-The first models analyse different network dissimilarity metrics within sites and between treatments. We will assume a Clementsian view of community ecology, where maturing communities progress towards a optimum community structure. Therefore, we will generate three types of communities: `r toString(n)` mature communities, already at the optimum state; `r toString(n)` maturing communities, progressing towards the optimum state over time; and, `r toString(n)` unrestored communities, which should resemble maturing communities at time $t=2006$. For each of this communities, we will assume we have `r toString(nt)` time points measures sometime between 2006 and 2015.
+The first models analyse different network dissimilarity metrics within sites and between treatments. We will assume a Clementsian view of community ecology, where maturing communities progress towards an optimum community structure. Therefore, we will generate three types of communities: `r toString(n)` mature communities, already at the optimum state; `r toString(n)` maturing communities, progressing towards the optimum state over time; and, `r toString(n)` unrestored communities, which should resemble maturing communities at time $t=2006$. For each of this communities, we will assume we have `r toString(nt)` time points measures sometime between 2006 and 2015.
 
 ```{r, eval = TRUE, message=FALSE}
 library(dplyr)
@@ -260,7 +260,7 @@ Species' roles are based on the definition of network motifs, and for each empir
 
 Imagine that every network from the exercise before has now three species $a$, $b$, and $c$.
 
-```{r, eval = TRUE, message=FALSE}
+```{r, eval = TRUE, message=FALSE, warning=FALSE, error=FALSE}
 
 d_spp <- d %>% rowwise() %>%
   reframe(sp = c("a", "b", "c"), across())
@@ -327,7 +327,7 @@ d_spp[,c("v1", "v2", "v3")] <- rdirichlet(nrow(d_spp), alpha = as.matrix(d_spp[,
 
 ```
 
-Much like with the case of network dissimilarity, we can now calculate the dissimilarity between any two species at any time point and network. We will define the dissimilarity metric as $d=\frac{1-\rho}{2}$, where $\rho$ is the Pearson's correlation between species role. Notice, however, that we will use the state of the network, defined for the previous figures, as element $v_0$ of species roles, to account for overall network differences.
+Much like with the case of network dissimilarity, we can now calculate the dissimilarity between any two species at any time point and network. We will define the dissimilarity metric as $d=\frac{1-\rho}{2}$, where $\rho$ is the Pearson's correlation between species role. Notice, however, that we will use the state of the network, defined for the previous figures, as element $v_0$ of species roles, to include overall network differences as part of the definiton of a role.
 
 ```{r, eval = TRUE, message=FALSE}
 
